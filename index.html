@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Bucket | Elvis</title>
+    <meta name="description" content="My Movie Bucket List filled with all the movies, anime and TV shows I've watched, dropped or currently watching!">
+    <link rel="shortcut icon" href="img/naruto_japanese_cuisine_japan_ramen_japanese_food_icon_190977.svg" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        :root {
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --card-border: rgba(255, 255, 255, 0.2);
+            --text-color: #f0f0f0;
+            --main-bg: #141414;
+            --gradient-start: #6a11cb;
+            --gradient-end: #2575fc;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--main-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 450px;
+            /* border-radius: 10px; */
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease;
+            transform: translateZ(0); /* Initiates a 3D context */
+        }
+
+        .card:hover {
+            /* border-radius: 10px; */
+            transform: perspective(5000px) rotateX(5deg) rotateY(5deg) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.8);
+            transition: filter 0.6s ease;
+        }
+        
+        .card:hover .card-bg {
+            filter: brightness(1);
+        }
+
+        /* Specific backgrounds */
+        .card[data-title="Movies"] .card-bg { 
+            background-image: url('img/movie-homealone.png');
+            /* background-position-x: -150px;  */
+        }
+        
+        .card[data-title="Anime"] .card-bg { 
+            background-image: url('img/anime-naruto.png'); 
+            /* background-position: -150px; */
+        }
+
+        .frosted-glass {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid var(--card-border);
+            z-index: 2;
+        }
+
+        .title {
+            font-size: 2em;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <h4 style="text-align: center;">My Movie Bucketlist</h4>
+    <div class="container">
+        <div class="card" data-title="Anime" data-link="https://myanimelist.net/animelist/lvztony?view=list&status=2">
+            <div class="card-bg"></div>
+            <div class="frosted-glass">
+                <p class="title">Anime</p>
+            </div>
+        </div>
+        <div class="card" data-title="Movies" data-link="https://letterboxd.com/elvistony/watchlist/">
+            <div class="card-bg"></div>
+            <div class="frosted-glass">
+                <p class="title">Movies</p>
+            </div>
+        </div>
+        
+    </div>
+    <h5>Created by: <a target="_blank" style="text-decoration: none;color: orange;" href="https://elvistony.dev">elvistony.dev</a></h5>
+
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                const url = card.getAttribute('data-link');
+                if (url) {
+                    window.open(url, '_blank');
+                }
+            });
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const cardWidth = rect.width;
+                const cardHeight = rect.height;
+
+                const rotateX = (y / cardHeight - 0.5) * 5; // -10 to 10
+                const rotateY = (x / cardWidth - 0.5) * -5; // -10 to 10
+                // card.style.borderRadius = '10px';
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // card.style.borderRadius = '10px';
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+        });
+    </script>
+</body>
+</html>
