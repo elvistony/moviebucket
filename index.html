@@ -74,13 +74,33 @@
         }
 
         /* Specific backgrounds */
+        .card[data-title="Movies-Done"] .card-bg { 
+            background-image: url('img/movie-scene-homealone.png');
+            /* background-position-x: -150px;  */
+        }
+
         .card[data-title="Movies"] .card-bg { 
-            background-image: url('img/movie-homealone.png');
+            background-image: url('img/movie-scene-matrix.png');
             /* background-position-x: -150px;  */
         }
         
+        .card[data-title="Anime-Done"] .card-bg { 
+            background-image: url('img/anime-naruto-wall.png'); 
+            /* background-position: -150px; */
+        }
+
         .card[data-title="Anime"] .card-bg { 
-            background-image: url('img/anime-naruto.png'); 
+            background-image: url('img/anime-scene-princess-mononoke.png'); 
+            /* background-position: -150px; */
+        }
+
+        .card[data-title="Animation-Done"] .card-bg { 
+            background-image: url('img/animation-scene-tangled.png'); 
+            /* background-position: -150px; */
+        }
+
+        .card[data-title="Animation"] .card-bg { 
+            background-image: url('img/movie-moana-2.png'); 
             /* background-position: -150px; */
         }
 
@@ -105,20 +125,487 @@
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
         }
     </style>
+
+    <style>
+        /* body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+  overflow: hidden;
+} */
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  transform: rotate(-45deg);
+}
+
+.star {
+  --star-color: var(--primary-color);
+  --star-tail-length: 6em;
+  --star-tail-height: 2px;
+  --star-width: calc(var(--star-tail-length) / 6);
+  --fall-duration: 9s;
+  --tail-fade-duration: var(--fall-duration);
+  position: absolute;
+  top: var(--top-offset);
+  left: 0;
+  width: var(--star-tail-length);
+  height: var(--star-tail-height);
+  color: var(--star-color);
+  background: linear-gradient(45deg, currentColor, transparent);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 6px currentColor);
+  transform: translate3d(104em, 0, 0);
+  animation: fall var(--fall-duration) var(--fall-delay) linear infinite, tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
+}
+@media screen and (max-width: 750px) {
+  .star {
+    animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
+  }
+}
+.star:nth-child(1) {
+  --star-tail-length: 6.37em;
+  --top-offset: 23.32vh;
+  --fall-duration: 9.291s;
+  --fall-delay: 3.444s;
+}
+.star:nth-child(2) {
+  --star-tail-length: 6.31em;
+  --top-offset: 85.43vh;
+  --fall-duration: 7.349s;
+  --fall-delay: 1.927s;
+}
+.star:nth-child(3) {
+  --star-tail-length: 7.07em;
+  --top-offset: 35.51vh;
+  --fall-duration: 9.229s;
+  --fall-delay: 8.531s;
+}
+.star:nth-child(4) {
+  --star-tail-length: 6.85em;
+  --top-offset: 86.86vh;
+  --fall-duration: 11.933s;
+  --fall-delay: 4.127s;
+}
+.star:nth-child(5) {
+  --star-tail-length: 5.44em;
+  --top-offset: 10.1vh;
+  --fall-duration: 10.338s;
+  --fall-delay: 9.137s;
+}
+.star:nth-child(6) {
+  --star-tail-length: 6.66em;
+  --top-offset: 40.15vh;
+  --fall-duration: 6.694s;
+  --fall-delay: 1.815s;
+}
+.star:nth-child(7) {
+  --star-tail-length: 7.45em;
+  --top-offset: 36.75vh;
+  --fall-duration: 11.119s;
+  --fall-delay: 8.833s;
+}
+.star:nth-child(8) {
+  --star-tail-length: 5.7em;
+  --top-offset: 19.94vh;
+  --fall-duration: 6.882s;
+  --fall-delay: 1.763s;
+}
+.star:nth-child(9) {
+  --star-tail-length: 5.01em;
+  --top-offset: 31.27vh;
+  --fall-duration: 6.715s;
+  --fall-delay: 6.826s;
+}
+.star:nth-child(10) {
+  --star-tail-length: 6.48em;
+  --top-offset: 91.52vh;
+  --fall-duration: 9.495s;
+  --fall-delay: 6.356s;
+}
+.star:nth-child(11) {
+  --star-tail-length: 7.1em;
+  --top-offset: 73.76vh;
+  --fall-duration: 7.133s;
+  --fall-delay: 4.651s;
+}
+.star:nth-child(12) {
+  --star-tail-length: 7.02em;
+  --top-offset: 82.23vh;
+  --fall-duration: 10.127s;
+  --fall-delay: 4.501s;
+}
+.star:nth-child(13) {
+  --star-tail-length: 6.72em;
+  --top-offset: 29.56vh;
+  --fall-duration: 11.024s;
+  --fall-delay: 2.169s;
+}
+.star:nth-child(14) {
+  --star-tail-length: 6.54em;
+  --top-offset: 3.35vh;
+  --fall-duration: 7.982s;
+  --fall-delay: 8.543s;
+}
+.star:nth-child(15) {
+  --star-tail-length: 6.98em;
+  --top-offset: 32.98vh;
+  --fall-duration: 6.172s;
+  --fall-delay: 0.724s;
+}
+.star:nth-child(16) {
+  --star-tail-length: 5.84em;
+  --top-offset: 56.59vh;
+  --fall-duration: 7.684s;
+  --fall-delay: 3.473s;
+}
+.star:nth-child(17) {
+  --star-tail-length: 6.38em;
+  --top-offset: 54.62vh;
+  --fall-duration: 11.616s;
+  --fall-delay: 3.142s;
+}
+.star:nth-child(18) {
+  --star-tail-length: 6.27em;
+  --top-offset: 61.46vh;
+  --fall-duration: 8.807s;
+  --fall-delay: 0.858s;
+}
+.star:nth-child(19) {
+  --star-tail-length: 5.43em;
+  --top-offset: 19.01vh;
+  --fall-duration: 8.367s;
+  --fall-delay: 5.625s;
+}
+.star:nth-child(20) {
+  --star-tail-length: 6.14em;
+  --top-offset: 17.74vh;
+  --fall-duration: 8.163s;
+  --fall-delay: 0.402s;
+}
+.star:nth-child(21) {
+  --star-tail-length: 5.97em;
+  --top-offset: 45.19vh;
+  --fall-duration: 11.441s;
+  --fall-delay: 0.369s;
+}
+.star:nth-child(22) {
+  --star-tail-length: 6.75em;
+  --top-offset: 3.65vh;
+  --fall-duration: 6.656s;
+  --fall-delay: 0.941s;
+}
+.star:nth-child(23) {
+  --star-tail-length: 6.17em;
+  --top-offset: 44.16vh;
+  --fall-duration: 6.124s;
+  --fall-delay: 2.307s;
+}
+.star:nth-child(24) {
+  --star-tail-length: 5.73em;
+  --top-offset: 91.86vh;
+  --fall-duration: 11.684s;
+  --fall-delay: 8.713s;
+}
+.star:nth-child(25) {
+  --star-tail-length: 7.26em;
+  --top-offset: 63.63vh;
+  --fall-duration: 11.89s;
+  --fall-delay: 1.62s;
+}
+.star:nth-child(26) {
+  --star-tail-length: 5.06em;
+  --top-offset: 5.06vh;
+  --fall-duration: 11.655s;
+  --fall-delay: 7.532s;
+}
+.star:nth-child(27) {
+  --star-tail-length: 6.53em;
+  --top-offset: 55.44vh;
+  --fall-duration: 8.544s;
+  --fall-delay: 0.278s;
+}
+.star:nth-child(28) {
+  --star-tail-length: 5.9em;
+  --top-offset: 87.66vh;
+  --fall-duration: 7.052s;
+  --fall-delay: 0.344s;
+}
+.star:nth-child(29) {
+  --star-tail-length: 5.84em;
+  --top-offset: 39.46vh;
+  --fall-duration: 9.229s;
+  --fall-delay: 5.618s;
+}
+.star:nth-child(30) {
+  --star-tail-length: 6.69em;
+  --top-offset: 97.26vh;
+  --fall-duration: 9.058s;
+  --fall-delay: 1.81s;
+}
+.star:nth-child(31) {
+  --star-tail-length: 6.25em;
+  --top-offset: 53.11vh;
+  --fall-duration: 11.392s;
+  --fall-delay: 2.685s;
+}
+.star:nth-child(32) {
+  --star-tail-length: 5.68em;
+  --top-offset: 28.99vh;
+  --fall-duration: 11.226s;
+  --fall-delay: 5.853s;
+}
+.star:nth-child(33) {
+  --star-tail-length: 5.41em;
+  --top-offset: 56.32vh;
+  --fall-duration: 6.383s;
+  --fall-delay: 1.292s;
+}
+.star:nth-child(34) {
+  --star-tail-length: 5.74em;
+  --top-offset: 73.01vh;
+  --fall-duration: 11.562s;
+  --fall-delay: 8.652s;
+}
+.star:nth-child(35) {
+  --star-tail-length: 7.34em;
+  --top-offset: 96.43vh;
+  --fall-duration: 9.587s;
+  --fall-delay: 1.789s;
+}
+.star:nth-child(36) {
+  --star-tail-length: 7.27em;
+  --top-offset: 89.77vh;
+  --fall-duration: 9.497s;
+  --fall-delay: 5.511s;
+}
+.star:nth-child(37) {
+  --star-tail-length: 7.15em;
+  --top-offset: 98.65vh;
+  --fall-duration: 7.738s;
+  --fall-delay: 5.864s;
+}
+.star:nth-child(38) {
+  --star-tail-length: 6.21em;
+  --top-offset: 20.51vh;
+  --fall-duration: 10.56s;
+  --fall-delay: 0.304s;
+}
+.star:nth-child(39) {
+  --star-tail-length: 5.32em;
+  --top-offset: 81.37vh;
+  --fall-duration: 11.801s;
+  --fall-delay: 2.323s;
+}
+.star:nth-child(40) {
+  --star-tail-length: 6.9em;
+  --top-offset: 86.49vh;
+  --fall-duration: 6.612s;
+  --fall-delay: 2.487s;
+}
+.star:nth-child(41) {
+  --star-tail-length: 7.31em;
+  --top-offset: 95.67vh;
+  --fall-duration: 7.782s;
+  --fall-delay: 5.85s;
+}
+.star:nth-child(42) {
+  --star-tail-length: 5.77em;
+  --top-offset: 19.47vh;
+  --fall-duration: 9.026s;
+  --fall-delay: 8.166s;
+}
+.star:nth-child(43) {
+  --star-tail-length: 6.09em;
+  --top-offset: 21.34vh;
+  --fall-duration: 9.722s;
+  --fall-delay: 3.974s;
+}
+.star:nth-child(44) {
+  --star-tail-length: 6.53em;
+  --top-offset: 50.74vh;
+  --fall-duration: 10.212s;
+  --fall-delay: 7.589s;
+}
+.star:nth-child(45) {
+  --star-tail-length: 5.28em;
+  --top-offset: 68.8vh;
+  --fall-duration: 6.336s;
+  --fall-delay: 6.012s;
+}
+.star:nth-child(46) {
+  --star-tail-length: 6.33em;
+  --top-offset: 20.59vh;
+  --fall-duration: 6.476s;
+  --fall-delay: 3.045s;
+}
+.star:nth-child(47) {
+  --star-tail-length: 5.8em;
+  --top-offset: 45.27vh;
+  --fall-duration: 6.764s;
+  --fall-delay: 7.445s;
+}
+.star:nth-child(48) {
+  --star-tail-length: 6.94em;
+  --top-offset: 48.29vh;
+  --fall-duration: 8.1s;
+  --fall-delay: 2.474s;
+}
+.star:nth-child(49) {
+  --star-tail-length: 5.38em;
+  --top-offset: 7.39vh;
+  --fall-duration: 8.038s;
+  --fall-delay: 1.919s;
+}
+.star:nth-child(50) {
+  --star-tail-length: 6.4em;
+  --top-offset: 14.37vh;
+  --fall-duration: 7.772s;
+  --fall-delay: 3.31s;
+}
+.star::before, .star::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: calc(var(--star-width) / -2);
+  width: var(--star-width);
+  height: 100%;
+  background: linear-gradient(45deg, transparent, currentColor, transparent);
+  border-radius: inherit;
+  animation: blink 2s linear infinite;
+}
+.star::before {
+  transform: rotate(45deg);
+}
+.star::after {
+  transform: rotate(-45deg);
+}
+
+@keyframes fall {
+  to {
+    transform: translate3d(-30em, 0, 0);
+  }
+}
+@keyframes tail-fade {
+  0%, 50% {
+    width: var(--star-tail-length);
+    opacity: 1;
+  }
+  70%, 80% {
+    width: 0;
+    opacity: 0.4;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0.6;
+  }
+}
+    </style>
 </head>
 <body>
-    <h4 style="text-align: center;">My Entertainment Bucketlist</h4>
+<div class="stars">
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+</div>
+    <h4 style="text-align: center;">I've Watched These</h4>
     <div class="container">
-        <div class="card" data-title="Anime" data-link="https://myanimelist.net/animelist/lvztony?view=list&status=2">
+        <div class="card" data-title="Anime-Done" data-link="https://myanimelist.net/animelist/lvztony?status=2">
             <div class="card-bg"></div>
             <div class="frosted-glass">
                 <p class="title">Anime</p>
             </div>
         </div>
-        <div class="card" data-title="Movies" data-link="https://www.imdb.com/user/ur207294783/checkins/?ref_=cr_lst_sm">
+        <div class="card" data-title="Movies-Done" data-link="https://www.imdb.com/user/ur207294783/checkins/?ref_=cr_lst_sm">
             <div class="card-bg"></div>
             <div class="frosted-glass">
                 <p class="title">Movies</p>
+            </div>
+        </div>
+        <div class="card" data-title="Animation-Done" data-link="https://www.imdb.com/list/ls4103981571/">
+            <div class="card-bg"></div>
+            <div class="frosted-glass">
+                <p class="title">Animation</p>
+            </div>
+        </div>
+        
+    </div>
+    <h4 style="text-align: center;margin-top: 100px;">These are on my Lists</h4>
+    <div class="container">
+        <div class="card" data-title="Anime" data-link="https://myanimelist.net/animelist/lvztony?status=6">
+            <div class="card-bg"></div>
+            <div class="frosted-glass">
+                <p class="title">Anime</p>
+            </div>
+        </div>
+        <div class="card" data-title="Movies" data-link="https://www.imdb.com/user/ur207294783/watchlist/?ref_=ls_sm">
+            <div class="card-bg"></div>
+            <div class="frosted-glass">
+                <p class="title">Movies</p>
+            </div>
+        </div>
+        <div class="card" data-title="Animation" data-link="https://www.imdb.com/list/ls4103807493/">
+            <div class="card-bg"></div>
+            <div class="frosted-glass">
+                <p class="title">Animation</p>
             </div>
         </div>
         
